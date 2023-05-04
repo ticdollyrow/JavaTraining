@@ -1,4 +1,4 @@
-package Structure;
+package Shildt;
 
 public class Queue {
     char q[] ; // массив для хранения элементов очереди

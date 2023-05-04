@@ -1,4 +1,4 @@
-package Structure;
+package Shildt;
 
 public class ShowBits {
     int numbits;
