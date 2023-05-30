@@ -1,5 +1,8 @@
 package Shildt.Chapter8;
 
+import Shildt.Chapter9.QueueEmptyException;
+import Shildt.Chapter9.QueueFullException;
+
 public class FixedQueue implements ICharQ{
     private char[] q;
     private int getloc, putloc;
@@ -10,17 +13,17 @@ public class FixedQueue implements ICharQ{
          putloc = getloc = 0;
      }
     @Override
-    public void put(char ch) {
+    public void put(char ch) throws QueueFullException {
         if( putloc == q.length){
-            return;
+            throw new QueueFullException(q.length);
         }
         q[putloc++] = ch;
     }
 
     @Override
-    public char get() {
+    public char get() throws QueueEmptyException {
          if(putloc == getloc)
-            return (char) 0;
+            throw new QueueEmptyException();
          return q[getloc++];
     }
 }

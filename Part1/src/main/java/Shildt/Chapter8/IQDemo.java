@@ -1,5 +1,8 @@
 package Shildt.Chapter8;
 
+import Shildt.Chapter9.QueueEmptyException;
+import Shildt.Chapter9.QueueFullException;
+
 public class IQDemo {
     public static void main(String[] args) {
         FixedQueue q1 = new FixedQueue(10);
@@ -10,31 +13,60 @@ public class IQDemo {
         char ch;
         int i;
         iq = q1;
-        for(i = 0; i < 10; i++){
-            iq.put((char)('A'+ i));
+        try {
+            for(i = 0; i < 10; i++){
+                iq.put((char)('A'+ i));
+            }
+        }catch (QueueFullException exp){
+            System.out.println(exp);
         }
 
-        for(i = 0; i < 10; i++ ){
-            System.out.print(iq.get());
+        try {
+            for(i = 0; i < 10; i++ ){
+                System.out.print(iq.get());
+            }
+        }catch (QueueEmptyException exp){
+            System.out.println(exp);
         }
+
         System.out.println();
 
         iq = q2;
-        for(i = 0; i < 10; i++){
-            iq.put((char)('A'+ i));
+        try {
+            for(i = 0; i < 10; i++){
+                iq.put((char)('A'+ i));
+            }
+        }catch (QueueFullException exp){
+            System.out.println(exp);
         }
-        for(i = 0; i < 5; i++ ){
-            System.out.print(iq.get());
+
+        try{
+            for(i = 0; i < 5; i++ ){
+                System.out.print(iq.get());
+            }
+        }catch (QueueEmptyException exp){
+            System.out.println(exp);
         }
+
         System.out.println();
 
         iq = q3;
-        for(i = 0; i < 8; i++){
-            iq.put((char)('A'+ i));
+        try {
+            for(i = 0; i < 8; i++){
+                iq.put((char)('A'+ i));
+            }
+        }catch (QueueFullException exp){
+            System.out.println(exp);
         }
-        for(i = 0; i < 8; i++ ){
-            System.out.print(iq.get());
+
+        try {
+            for(i = 0; i < 8; i++ ){
+                System.out.print(iq.get());
+            }
+        }catch (QueueEmptyException exp){
+            System.out.println(exp);
         }
+
         System.out.println();
     }
 }
